@@ -1,3 +1,4 @@
+// Setup
 var express = require("express");
 var path = require("path");
 
@@ -9,11 +10,14 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-
-var pop = "Pop!!!"
+// Starter
 
 app.get("/", function (req, res) {
-    return res.json(pop);
+    res.sendFile(path.join(__dirname, "./app/public/home.html"));
+});
+
+app.get("/survey", function (req, res) {
+    res.sendFile(path.join(__dirname, "./app/public/survey.html"));
 });
 
 
