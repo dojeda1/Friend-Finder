@@ -17,21 +17,48 @@
 
 <body>
 
-    <div class="container p-3">
-        <div class="jumbotron">
-            <h1>Tippy Kayay!</h1>
-            <p>Take the survey and let us find you a new best friend!</p>
-            <button class="btn btn-primary">Survey</button>
+    <div class="container">
+
+        <h2 class="mb-5">Survey Questions</h2>
+        <div class="col mb-5">
+            <h4>Name (Required)</h4>
+            <input type="text" id="name" class="form-control" required="">
+
+            <h4>Link to Photo Image (Required)</h4>
+            <input type="text" id="photo" class="form-control" required="">
         </div>
+        <div class="col mb-5">
+            <h3 class="mb-3">Question 1</h3>
+            <h4>You like to try new restaurants.</h4>
+            <select class="form-control" id="q1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="col mb-5">
+            <h3 class="mb-3">Question 2</h3>
+            <h4>Holding puppies brings you joy.</h4>
+            <select class="form-control" id="q2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+            Submit</button>
+
     </div>
 
-    <!-- More Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+    <!-- JavaScript -->
+
 </body>
 
 </html>
