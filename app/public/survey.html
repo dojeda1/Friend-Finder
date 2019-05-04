@@ -168,6 +168,7 @@
     <script>
         $("#submit-btn").on("click", function () {
             var newProfile = {
+
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
 
@@ -185,12 +186,28 @@
 
             // console.log(newProfile);
 
-            $.post("/survey", newProfile)
+            compare(newProfile);
+
+            $.post("/api/friends", newProfile)
                 .then(function (data) {
                     console.log("survey.html", data);
                     console.log("Profile Added.");
                 });
+
         })
+
+        function compare(profile) {
+            $.get("api/friends").then(function (data) {
+                // console.log(data);
+                for (i = 0; i, data.length; i++) {
+                    console.log(data[i].name);
+                }
+
+
+                console.log(profile.name);
+
+            });
+        }
     </script>
 
 </body>
