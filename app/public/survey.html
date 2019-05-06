@@ -190,7 +190,7 @@
 
             $.post("/api/friends", newProfile)
                 .then(function (data) {
-                    console.log("survey.html", data);
+                    // console.log("survey.html", data);
                     console.log("Profile Added.");
                 });
 
@@ -199,7 +199,14 @@
         function compare(profile) {
             $.get("api/friends").then(function (data) {
                 // console.log(data);
-                for (i = 0; i, data.length; i++) {
+
+                var bestieName = "";
+                var bestieImage = "";
+                var bestieScore = 50;
+
+
+                for (i = 0; i < data.length; i++) {
+                    // console.log(data[i])
                     console.log(data[i].name);
 
                     num1 = Math.abs(data[i].q1 - profile.q1);
@@ -215,10 +222,20 @@
 
                     totalDif = (num1 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9 + num10);
                     console.log("Total Diff: " + totalDif);
+
+                    if (totalDif < bestieScore) {
+                        bestieName = data[i].name;
+                        bestieImage = data[i].photo;
+                        bestieScore = totalDif;
+
+                        console.log("New Bestie: " + bestieName + "|" + bestieScore + "|" + bestieImage);
+                    }
+
                 }
 
+                console.log("True Bestie: " + bestieName + "|" + bestieScore + "|" + bestieImage);
 
-                console.log(profile.name);
+                // console.log(profile.name);
 
             });
         }
