@@ -159,12 +159,45 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" id="submit-btn">
+        <button type="button" class="btn btn-primary" id="submit-btn">
             Submit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="friendModalLabel">Your New Bestie</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 id="palName"></h4>
+                        <img id="palPic" src="" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
     <!-- JavaScript -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
     <script>
         $("#submit-btn").on("click", function () {
             var newProfile = {
@@ -184,15 +217,28 @@
                 q10: parseInt($("#q10").val())
             };
 
-            // console.log(newProfile);
+            if (newProfile.name === "" || newProfile.photo === "" || newProfile.q1 === "" || newProfile.q2 ===
+                "" || newProfile.q3 === "" || newProfile.q4 === "" || newProfile.q5 === "" || newProfile.q6 ===
+                "" || newProfile.q7 === "" || newProfile.q8 === "" || newProfile.q9 === "" || newProfile.q10 ===
+                "") {
 
-            compare(newProfile);
+                alert("All fields must be filled and answered.");
+                // $('#friendModal').modal();
 
-            $.post("/api/friends", newProfile)
-                .then(function (data) {
-                    // console.log("survey.html", data);
-                    console.log("Profile Added.");
-                });
+            } else {
+                // console.log(newProfile);
+
+                compare(newProfile);
+
+                $.post("/api/friends", newProfile)
+                    .then(function (data) {
+                        // console.log("survey.html", data);
+                        console.log("Profile Added.");
+                    });
+
+                $('#friendModal').modal();
+
+            }
 
         })
 
@@ -234,6 +280,9 @@
                 }
 
                 console.log("True Bestie: " + bestieName + "|" + bestieScore + "|" + bestieImage);
+
+                $("#palName").text(bestieName);
+                $("#palPic").attr("src", bestieImage);
 
                 // console.log(profile.name);
 
