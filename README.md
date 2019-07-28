@@ -6,6 +6,8 @@ User adds a name and image URL, then completes a series of 10 questions and the 
   
   **Visit Web App [Here!](https://vast-lake-23396.herokuapp.com/)**
 
+![Web App Image](./demo.png)
+
 ### Technologies used
 
 * HTML
